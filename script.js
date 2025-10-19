@@ -5,7 +5,6 @@ console.log("----------------------------------------------\n")
 let humanScore = 0;
 let computerScore = 0;
 
-
 // console.log("----------Scoreboard---------")
 // console.log(`Human Score: ${humanScore}`)
 // console.log(`Computer Score: ${computerScore}`)
@@ -53,14 +52,43 @@ function playRound(humanChoice, computerChoice) {
     };
 };
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice().toLowerCase();
+function playGame() {
 
-let roundResult = playRound(humanChoice, computerChoice);
+    for (let i = 1; i <= 5; i++) {
 
-console.log(roundResult);
+        let computerChoice = getComputerChoice();
+        let humanChoice = getHumanChoice().toLowerCase();
 
-console.log("----------Scoreboard---------")
-console.log(`Human Score: ${humanScore}`)
-console.log(`Computer Score: ${computerScore}`)
-console.log("-----------------------------\n")
+        let roundResult = playRound(humanChoice, computerChoice);
+
+        console.log("\n----------------------------------------------\n")
+
+        console.log(`Round ${i}:`)
+
+        
+        console.log(roundResult);
+
+        console.log("\n----------------------------------------------\n")
+
+        // console.log("----------Scoreboard---------")
+        // console.log(`Human Score: ${humanScore}`)
+        // console.log(`Computer Score: ${computerScore}`)
+        // console.log("-----------------------------\n")
+
+    }
+
+
+}
+
+playGame()
+
+console.log("-----------------Final Scoreboard--------------");
+console.log(`Human Score: ${humanScore}`);
+console.log(`Computer Score: ${computerScore}`);
+console.log("----------------------------------------------\\n");
+
+if (humanScore > computerScore) {
+    console.log("You Won!!!!");
+} else {
+    console.log("You Lost :(");
+}
