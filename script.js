@@ -1,24 +1,40 @@
-console.log("----------------------------------------------")
-console.log("Rock, Paper Scissors battle")
-console.log("----------------------------------------------\n")
+let btnRock = document.querySelector("#rock");
+let btnPaper = document.querySelector("#paper");
+let btnScissors = document.querySelector("#scissors");
 
 let humanScore = 0;
 let computerScore = 0;
 
-// console.log("----------Scoreboard---------")
-// console.log(`Human Score: ${humanScore}`)
-// console.log(`Computer Score: ${computerScore}`)
-// console.log("-----------------------------\n")
+let computerChoice = '';
+let humanChoice = '';
+let rodada = '';
 
+btnRock.addEventListener('click', (event) => {
+    //alert('Rock was clicked');
+    humanChoice = 'rock';
+    computerChoice = getComputerChoice();
+
+    console.log(playRound(humanChoice, computerChoice));
+});
+
+btnPaper.addEventListener('click', (event) => {
+    humanChoice = 'paper';
+    computerChoice = getComputerChoice();
+
+    console.log(playRound(humanChoice, computerChoice));;
+});
+
+btnScissors.addEventListener('click', (event) => {
+    humanChoice = 'scissors';
+    computerChoice = getComputerChoice();
+
+    console.log(playRound(humanChoice, computerChoice));
+});
 
 function getComputerChoice() {
     gameOptions = ['rock', 'paper', 'scissors'];
 
     return gameOptions[Math.floor(Math.random() * 3)];
-};
-
-function getHumanChoice() {
-    return prompt("rock, paper or scissors?");
 };
 
 function playRound(humanChoice, computerChoice) {
@@ -50,45 +66,8 @@ function playRound(humanChoice, computerChoice) {
             return 'You Win! Scissors beats Paper';
         };
     };
+
+    if (humanChoice === computerChoice) {
+        return 'Tie'
+    } ;
 };
-
-function playGame() {
-
-    for (let i = 1; i <= 5; i++) {
-
-        let computerChoice = getComputerChoice();
-        let humanChoice = getHumanChoice().toLowerCase();
-
-        let roundResult = playRound(humanChoice, computerChoice);
-
-        console.log("\n----------------------------------------------\n")
-
-        console.log(`Round ${i}:`)
-
-        
-        console.log(roundResult);
-
-        console.log("\n----------------------------------------------\n")
-
-        // console.log("----------Scoreboard---------")
-        // console.log(`Human Score: ${humanScore}`)
-        // console.log(`Computer Score: ${computerScore}`)
-        // console.log("-----------------------------\n")
-
-    }
-
-
-}
-
-playGame()
-
-console.log("-----------------Final Scoreboard--------------");
-console.log(`Human Score: ${humanScore}`);
-console.log(`Computer Score: ${computerScore}`);
-console.log("----------------------------------------------\\n");
-
-if (humanScore > computerScore) {
-    console.log("You Won!!!!");
-} else {
-    console.log("You Lost :(");
-}
